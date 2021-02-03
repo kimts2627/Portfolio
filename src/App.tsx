@@ -1,10 +1,10 @@
 import './style/App.scss';
-import Main from './component/Main';
+import MainContainer from './container/MainContainer';
 
 function App() {
   return (
     <div className="App">
-      <Main />
+      <MainContainer />
     </div>
   );
 }

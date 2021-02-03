@@ -7,6 +7,7 @@
 }
 
 @mixin headerFooter {
+  z-index: 2;
   position: absolute;
   //background-color: red;
   width: 90vw;
@@ -19,6 +20,23 @@
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
+  }
+  & h2 {
+    position: absolute;
+    width: 200px;
+    text-align: center;
+    left: 50%;
+    margin-left: -100px;
+    font-size: 13px;
+  }
+  & h3 {
+    position: absolute;
+    width: 200px;
+    text-align: center;
+    left: 50%;
+    margin-left: -100px;
+    font-size: 11px;
+    margin-top: 30px;
   }
 }
 
@@ -33,7 +51,7 @@
 }
 
 .Main-title {
-  font-size: 200px;
+  font-size: 220px;
   font-family: 'Teko';
   color: rgb(102, 22, 231);
   cursor: default;
@@ -68,13 +86,13 @@
 }
 
 .projects {
+  z-index: 1;
   position: absolute;
   @include circle($item-count: 20, $circle-size: 10000px, $item-size: 700px);
   //border: 1px solid royalblue;
   border-radius: 50%;
   top: 50%;
-  transform: rotate(234deg);
-  transition: all 0.15s;
+  transform: rotate(270deg);
   & span {
     //border: 1px solid black;
     display: flex;
@@ -87,6 +105,7 @@
       justify-content: center;
       align-items: center;
       height: 390px;
+      cursor: pointer;
       & img {
         width: 95%;
       }
