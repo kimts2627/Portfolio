@@ -113,3 +113,33 @@
   }
 }
 
+.Main-effect {
+  z-index: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  overflow: hidden;
+
+  @mixin fade {
+    position: absolute;
+    background-color: rgb(209, 221, 255);
+    width: 500px;
+    height: 1100px;
+    filter: blur(90px);
+    transform: rotate(70deg);
+    transition: all 4s;
+  }
+
+  & .fade1 {
+    @include fade;
+    top: -80vh;
+    left: 10vw;
+  }
+  & .fade2 {
+    @include fade;
+    top: 35vh;
+    left: 55vw;
+  }
+}
+

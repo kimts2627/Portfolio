@@ -16,14 +16,12 @@ const Projects: React.FC<ProjectsProps> = ({ degree, handleDegree }) => {
       window.addEventListener('mousewheel', (delta: any) => {
         if(delta.wheelDelta >= 3) {
           ProjectRef.current.style.transform = `rotate(${newDeg}deg)`;
-          //degree = degree + 0.3;
-          newDeg = newDeg + 0.3;
+          newDeg = newDeg + 0.6;
           console.log(newDeg);
         }
         else if(delta.wheelDelta <= -3) {
           ProjectRef.current.style.transform = `rotate(${newDeg}deg)`;
-          newDeg = newDeg - 0.3;
-          //degree = degree - 0.3;
+          newDeg = newDeg - 0.6;
           console.log(newDeg);
         }
         if(newDeg < 252) {
