@@ -1,0 +1,96 @@
+.Main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+@mixin headerFooter {
+  position: absolute;
+  //background-color: red;
+  width: 90vw;
+  left: 5vw;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & p {
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+.Main-header {
+  @include headerFooter;
+  top: 0;
+}
+
+.Main-footer {
+  @include headerFooter;
+  bottom: 0;
+}
+
+.Main-title {
+  font-size: 200px;
+  font-family: 'Teko';
+  color: rgb(102, 22, 231);
+  cursor: default;
+}
+
+@mixin circle($item-count, $circle-size, $item-size) {
+  width:  $circle-size;
+  height: $circle-size;
+  border-radius: 50%; 
+  > * {
+    display: block;
+    position: absolute;
+    top:  50%; 
+    left: 50%;
+    width:  $item-size;
+    height: $item-size;
+    margin: -($item-size / 2);
+  
+    $angle: (360 / $item-count);
+    $rot: 0;
+
+    @for $i from 1 through $item-count {
+      &:nth-of-type(#{$i}) {
+        transform: 
+          rotate($rot * 1deg) 
+          translate($circle-size / 2)
+          rotate(90deg) 
+      }
+      $rot: $rot + $angle;
+    }
+  }
+}
+
+.projects {
+  position: absolute;
+  @include circle($item-count: 20, $circle-size: 10000px, $item-size: 700px);
+  //border: 1px solid royalblue;
+  border-radius: 50%;
+  top: 50%;
+  transform: rotate(234deg);
+  transition: all 0.15s;
+  & span {
+    //border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & div {
+      background-color: rgb(248, 248, 245);
+      box-shadow: 15px 15px 15px 10px rgba(0, 0, 0, 0.137);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 390px;
+      & img {
+        width: 95%;
+      }
+    }
+  }
+}
+
