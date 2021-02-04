@@ -1,6 +1,7 @@
 // 액션
 const CHANGE_CURRENT_PROJECT = 'main/CHANGE_CURRENT_PROJECT' as const;
 const HANDLE_DEGREE = 'main/HANDLE_DEGREE' as const;
+const HANDLE_CONTACT = 'main/HANDLE_CONTACT' as const;
 
 // 액션 생성 함수
 export const changeCurrentProject = () => ({ type: CHANGE_CURRENT_PROJECT });
@@ -10,10 +11,12 @@ export const handleDegree = (newDegree: number) => ({
     newDegree
   }
 });
+export const handleContact = () => ({ type: HANDLE_CONTACT });
 
 // 액션 타입
 type MainAction =
   | ReturnType<typeof changeCurrentProject> | ReturnType<typeof handleDegree>
+  | ReturnType<typeof handleContact>
 
 // 스테이트 초기값
 interface MainState {
@@ -37,6 +40,8 @@ const main = (state = initialState, action: MainAction) => {
       })
     case HANDLE_DEGREE:
       return Object.assign({}, state, { degree: action.payload.newDegree })
+    case HANDLE_CONTACT:
+      return Object.assign({}, state, { isContactOn: !state.isContactOn })
     default:
       return state;
   }

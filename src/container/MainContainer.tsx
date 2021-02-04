@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Main from '../component/Main';
 import { RootState } from '../modules';
-import { handleDegree, changeCurrentProject } from '../modules/main';
+import { handleDegree, changeCurrentProject, handleContact } from '../modules/main';
 
 const MainComponent: React.FC = () => {
 
@@ -20,6 +20,10 @@ const MainComponent: React.FC = () => {
     dispatch(changeCurrentProject());
   }
 
+  const handlingContact = () => {
+    dispatch(handleContact());
+  }
+
   return(
     <Main
       degree={degree}
@@ -27,6 +31,7 @@ const MainComponent: React.FC = () => {
       currentProject={currentProject}
       handleDegree={handlingDegree}
       changeCurrentProject={changingCurrentProject}
+      handleContact={handlingContact}
     />
   );
 }

@@ -9,6 +9,7 @@ interface MainProps {
   currentProject: string;
   changeCurrentProject: () => void;
   handleDegree: (newDegree: number) => void;
+  handleContact: () => void;
 }
 
 const Main: React.FC<MainProps> = ({
@@ -16,7 +17,8 @@ const Main: React.FC<MainProps> = ({
   isContactOn,
   currentProject,
   changeCurrentProject,
-  handleDegree
+  handleDegree,
+  handleContact
 }) => {
 
   // 현재 프로젝트 및 배경컬러 변경
@@ -62,7 +64,7 @@ const Main: React.FC<MainProps> = ({
         <div className='fade2'ref={fadeRef2}/>
       </div>
       <Header />
-      <Footer currentProject={currentProject}/>
+      <Footer currentProject={currentProject} handleContact={handleContact} isContactOn={isContactOn}/>
       <Projects degree={degree} handleDegree={handleDegree}/>
       <h1 className='Main-title' ref={titleRef}>{generateTitle()}</h1>
     </main>
