@@ -45,6 +45,16 @@ const Main: React.FC<MainProps> = ({
     }
   }
 
+  // 타이틀 변경 애니메이션
+  const titleRef: any = useRef();
+
+  useEffect(() => {
+    titleRef.current.style.animation = 'changeTitle 0.2s ease forwards'
+    setTimeout(() => {
+      titleRef.current.style.animation = 'none'
+    }, 200);
+  }, [currentProject]);
+
   return(
     <main className='Main'>
       <div className='Main-effect'>
@@ -54,7 +64,7 @@ const Main: React.FC<MainProps> = ({
       <Header />
       <Footer currentProject={currentProject}/>
       <Projects degree={degree} handleDegree={handleDegree}/>
-      <h1 className='Main-title'>{generateTitle()}</h1>
+      <h1 className='Main-title' ref={titleRef}>{generateTitle()}</h1>
     </main>
   );
 }

@@ -55,6 +55,16 @@
   font-family: 'Teko';
   color: rgb(102, 22, 231);
   cursor: default;
+  //animation: changeTitle 1s ease forwards;
+}
+
+@keyframes changeTitle {
+  50% {
+    margin-top: 30px;
+  }
+  100% {
+    margin-top: 0;
+  }
 }
 
 @mixin circle($item-count, $circle-size, $item-size) {
