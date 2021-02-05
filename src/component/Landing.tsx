@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Landing: React.FC = () => {
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.location.href='/main'
+    }, 3000);
+  }, []);
 
   return(
     <div className='Landing'>
