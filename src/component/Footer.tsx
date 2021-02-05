@@ -41,10 +41,10 @@ const Footer: React.FC<FooterProps> = ({ currentProject, isContactOn, handleCont
     <footer className='Main-footer'>
       <p onClick={handleContact} className={isContactOn ? 'contact-open' : undefined}>CONTACT</p>
       <div className={isContactOn ? 'contact-circle-open' : 'contact-circle'}>
-        <h4>Github</h4>
-        <h4>Velog</h4>
+        <h4><a href="https://github.com/kimts2627" target='_blank'>Github</a></h4>
+        <h4><a href="https://velog.io/@tsts_" target='_blank'>Velog</a></h4>
         <h4>E-Mail</h4>
-        <h4>Resume</h4>
+        <h4><a href="https://www.notion.so/Kim-Taesu-20bc3848588c4eba8831cc69666fe0d1" target='_blank'>Resume</a></h4>
       </div>
       <p className='rightmenu' onClick={handlePage}>ABOUT ME</p>
       <div className='transition-circle' ref={transitionRef}></div>

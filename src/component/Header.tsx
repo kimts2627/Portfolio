@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
 
   return(
     <header className='Main-header'>
-      <p>KIM TAESU</p>
-      <p className='rightmenu'>HAHAHA</p>
+      <Link to='/'><p>KIM TAESU</p></Link>
+      <p className='rightmenu'></p>
     </header>
   );
 }
