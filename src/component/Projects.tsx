@@ -37,14 +37,14 @@ const Projects: React.FC<ProjectsProps> = ({ degree, handleDegree }) => {
   return(
     <div className='projects' ref={ProjectRef}>
       <span>
-        <div>
+        <a href='https://komma.co.kr' target='_blank'>
           <img src={komma2}/>
-        </div>
+        </a>
       </span>
       <span>
-        <div>
+        <a href='https://onemeal.xyz' target='_blank'>
           <img src={onemeal1}/>
-        </div>
+        </a>
       </span>
     </div>
   );

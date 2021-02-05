@@ -4,21 +4,25 @@ import Footer from './Footer';
 import Projects from './Projects';
 
 interface MainProps {
+  isMain: boolean;
   degree: number;
   isContactOn: boolean;
   currentProject: string;
   changeCurrentProject: () => void;
   handleDegree: (newDegree: number) => void;
   handleContact: () => void;
+  handleMovePage: () => void;
 }
 
 const Main: React.FC<MainProps> = ({
+  isMain,
   degree,
   isContactOn,
   currentProject,
   changeCurrentProject,
   handleDegree,
-  handleContact
+  handleContact,
+  handleMovePage
 }) => {
 
   // 현재 프로젝트 및 배경컬러 변경
@@ -63,8 +67,14 @@ const Main: React.FC<MainProps> = ({
         <div className='fade1' ref={fadeRef1}/>
         <div className='fade2'ref={fadeRef2}/>
       </div>
-      <Header />
-      <Footer currentProject={currentProject} handleContact={handleContact} isContactOn={isContactOn}/>
+      <Header isMain={isMain} handleMovePage={handleMovePage}/>
+      <Footer
+        currentProject={currentProject}
+        handleContact={handleContact}
+        isContactOn={isContactOn}
+        isMain={isMain}
+        handleMovePage={handleMovePage}
+      />
       <Projects degree={degree} handleDegree={handleDegree}/>
       <h1 className='Main-title' ref={titleRef}>{generateTitle()}</h1>
     </main>

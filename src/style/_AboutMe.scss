@@ -1,0 +1,181 @@
+.AboutMe {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 200vh;
+  background-color: rgb(102, 22, 231);
+  & .title {
+    position: absolute;
+    color: white;
+    font-family: 'Do Hyeon';
+    font-size: 5.3em;
+    width: 70vw;
+    left: 50%;
+    margin-left: -35vw;
+    top: 25vh;
+    transition: all .2s cubic-bezier(0.23, 1, 0.320, 1);
+    @mixin titles {
+      position: relative;
+      opacity: 0;
+      top: 0px;
+    }
+
+    & .one {
+      @include titles;
+      animation: titleTransition 0.3s linear .1s forwards;
+    }
+    & .two {
+      @include titles;        
+      animation: titleTransition 0.3s linear .2s forwards;
+    }
+    & .three {
+      @include titles;        
+      animation: titleTransition 0.3s linear 1s forwards;
+    }
+    & .four {
+      @include titles;        
+      animation: titleTransition 0.3s linear 1.2s forwards;
+    }
+    & .five {
+      @include titles;        
+      animation: titleTransition 0.3s linear 1.4s forwards;
+      &-one{
+        color: rgb(26, 26, 26);
+      }
+    }
+    & .six {
+      @include titles;        
+      animation: titleTransition 0.3s linear 2s forwards;
+    }
+    & div {
+      display: inline;
+    }
+  }
+
+  & .middle {
+    position: absolute;
+    //background-color: salmon;
+    width: 70vw;
+    height: 15vh;
+    left: 50%;
+    margin-left: -35vw;
+    top: 80vh;
+    transition: all .2s cubic-bezier(0.23, 1, 0.320, 1);
+    opacity: 0;
+    animation: othersTransition 0.3s linear 2.3s forwards;
+    & p {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    & span {
+      position: absolute;
+      display: block;
+      background-color: white;
+      top: 0;
+      right: 0%;
+      height: 6px;
+      width: 200px;
+    }
+  }
+
+  & .description {
+    position: absolute;
+    //background-color: springgreen;
+    width: 70vw;
+    height: 55vh;
+    top: 120vh;
+    left: 50%;
+    margin-left: -35vw;
+    transition: all .2s cubic-bezier(0.23, 1, 0.320, 1);
+    opacity: 0;
+    animation: othersTransition 0.3s linear 2.3s forwards;
+    & span {
+      position: absolute;
+      display: block;
+      background-color: white;
+      top: 0;
+      left: 0%;
+      height: 6px;
+      width: 100px;
+    }
+    & div {
+      color: white;
+      font-size: 16px;
+      font-weight: 100;
+      margin-left: 44vw;
+      margin-bottom: 8px;
+    }
+    & .server {
+      margin-top: 30px;
+    }
+    & .etc {
+      margin-top: 30px;
+    }
+    & img {
+      position: absolute;
+      filter: invert(1);
+      height: 150px;
+      top: 40%;
+      margin-top: -75px;
+      transform: rotate(180deg);
+      cursor: pointer;
+      &:hover {
+        animation: shake 0.2s forwards alternate-reverse infinite;
+      }
+    }
+  }
+
+  @keyframes shake {
+    from {
+      transform: rotate(181deg);
+    }
+    to {
+      transform: rotate(179deg);
+    }
+  }
+
+  & .footer {
+    position: absolute;
+    //background-color: steelblue;
+    width: 70vw;
+    height: 5vh;
+    top: 180vh;
+    left: 50%;
+    margin-left: -35vw;
+    transition: all .2s cubic-bezier(0.23, 1, 0.320, 1);
+    opacity: 0;
+    animation: othersTransition 0.3s linear 2.3s forwards;
+    & div {
+      position: absolute;
+      color: white;
+      font-weight: 300;
+      width: 300px;
+      text-align: center;
+      left: 50%;
+      margin-left: -150px;
+      bottom: 0;
+    }
+  }
+}
+
+@keyframes titleTransition {
+  from {
+    opacity: 0;
+    top: 40px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@keyframes othersTransition {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

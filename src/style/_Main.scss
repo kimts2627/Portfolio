@@ -9,7 +9,6 @@
 @mixin headerFooter {
   z-index: 2;
   position: absolute;
-  //background-color: red;
   width: 90vw;
   left: 5vw;
   height: 100px;
@@ -119,7 +118,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    & div {
+    & a {
       background-color: rgb(248, 248, 245);
       box-shadow: 15px 15px 15px 10px rgba(0, 0, 0, 0.137);
       display: flex;
@@ -187,7 +186,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+    transition: transform 0.5s ease;
   }
 }
 
@@ -200,7 +199,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+    &::before {
+      content: '';
+      position: absolute;
+      left: -20%;
+      top: 49%;
+      width: 140%;
+      height: 1px;
+      background: #000000;
+      display: block;
+      transform: scale(0, 1);
+      transform-origin: left top;
+      transition: transform 0.4s cubic-bezier(1, 0, 0, 1)
+    }
+    &:hover {
+      opacity: 0.4;
+      &::before {
+        transform: scale(1, 1);
+        transform-origin: right top;
+      }
+    }
+
+  }
+  & .mail {
+    cursor: default;
   }
 }
 
@@ -210,7 +232,7 @@
   display: none;
   width: 10px;
   height: 10px;
-  background-color: royalblue;
+  background-color: rgb(102, 22, 231);
   border-radius: 50%;
   top: 50%;
   right: 0; 
