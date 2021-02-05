@@ -27,6 +27,16 @@ const Footer: React.FC<FooterProps> = ({ currentProject, isContactOn, handleCont
       generateTitle();
     });
 
+    // ABOUT ME 페이지 이동 함수
+    const transitionRef: any = useRef();
+    const handlePage = () => {
+      transitionRef.current.style.display = 'inline';
+      setTimeout(() => {
+        transitionRef.current.style.display = 'none';
+      }, 600);
+      // 이동
+    }
+
   return(
     <footer className='Main-footer'>
       <p onClick={handleContact} className={isContactOn ? 'contact-open' : undefined}>CONTACT</p>
@@ -36,7 +46,8 @@ const Footer: React.FC<FooterProps> = ({ currentProject, isContactOn, handleCont
         <h4>E-Mail</h4>
         <h4>Resume</h4>
       </div>
-      <p className='rightmenu'>ABOUT ME</p>
+      <p className='rightmenu' onClick={handlePage}>ABOUT ME</p>
+      <div className='transition-circle' ref={transitionRef}></div>
       <h2 ref={descRef}>Komma</h2>
       <h3 ref={descRef2}>콤마</h3>
     </footer>
