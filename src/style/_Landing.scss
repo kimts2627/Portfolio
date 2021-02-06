@@ -5,18 +5,50 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: introFadeIn 3s ease forwards;
-  opacity: 0;
   cursor: default;
   &-title {
     font-size: 150px;
     font-family: 'Teko';
     color: rgb(102, 22, 231);
+    opacity: 0;
+    animation: introFadeIn 3s ease forwards;
   }
   
   &-desc {
     font-size: 30px;
     font-weight: 100;
+    opacity: 0;
+    animation: introFadeIn 3s ease forwards;
+  }
+
+  & .circle {
+    z-index: 10;
+    position: absolute;
+    display: inline-block;
+    background-color: rgb(246, 246, 242);
+    border-radius: 50%;
+    top: 50vh;
+    left: 50vw;
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 0px;
+    height: 0px;
+    animation: bigCircle 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) 2.5s forwards;
+  }
+
+  @keyframes bigCircle {
+    from {
+      width: 0px;
+      height: 0px;
+      margin-top: 0px;
+      margin-left: 0px;
+    }
+    to {
+      width: 300vw;
+      height: 300vw;
+      margin-top: -150vw;
+      margin-left: -150vw;
+    }
   }
 }
 
