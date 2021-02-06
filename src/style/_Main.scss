@@ -4,6 +4,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 @mixin headerFooter {
@@ -65,7 +66,6 @@
   font-family: 'Teko';
   color: rgb(102, 22, 231);
   cursor: default;
-  //animation: changeTitle 1s ease forwards;
 }
 
 @keyframes changeTitle {
@@ -160,7 +160,7 @@
   & .fade2 {
     @include fade;
     top: 35vh;
-    left: 55vw;
+    right: -10vw;
   }
 }
 
@@ -253,6 +253,66 @@
     height: 10000px;
     margin-right: -4968.04px; // ABOUT ME 의 길이가 63.92이니 반만큼인 31.96
     margin-top: -5000px;
+  }
+}
+
+.tutorial {
+  z-index: 5;
+  position: absolute;
+  text-align: center;
+  width: 200px;
+  top: 10vh;
+  left: 50vw;
+  margin-left: -100px;
+  font-family: 'Teko';
+  color: rgb(102, 22, 231);
+  font-size: 20px;
+  opacity: 0;
+  animation: blink 10s linear;
+}
+
+@keyframes blink {
+  15% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media all and (max-width: 900px) {
+  .Main-title {
+    overflow: hidden;
+    font-size: 100px;
+  }
+
+  .projects {
+    & span {
+      & a {
+        height: 165px;
+        width: 300px;
+      }
+    }
+  }
+
+  .tutorial {
+    top: 30vh;
+  }
+
+  .contact-circle-open {
+    transform: rotate(260deg);
   }
 }
 

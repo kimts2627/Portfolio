@@ -63,6 +63,9 @@ const Main: React.FC<MainProps> = ({
 
   return(
     <main className='Main'>
+      <div className='tutorial'>
+        Scroll to Explore
+      </div>
       <div className='Main-effect'>
         <div className='fade1' ref={fadeRef1}/>
         <div className='fade2'ref={fadeRef2}/>

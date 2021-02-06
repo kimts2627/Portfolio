@@ -103,9 +103,9 @@
     & div {
       color: white;
       font-size: 16px;
-      font-weight: 100;
+      font-weight: 300;
       margin-left: 44vw;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     & .server {
       margin-top: 30px;
@@ -120,6 +120,7 @@
       top: 40%;
       margin-top: -75px;
       transform: rotate(180deg);
+      transition: height 0.2s linear;
       cursor: pointer;
       &:hover {
         animation: shake 0.2s forwards alternate-reverse infinite;
@@ -129,10 +130,10 @@
 
   @keyframes shake {
     from {
-      transform: rotate(181deg);
+      transform: rotate(181.5deg);
     }
     to {
-      transform: rotate(179deg);
+      transform: rotate(178.5deg);
     }
   }
 
@@ -177,5 +178,49 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@media all and (max-width: 900px) {
+  .AboutMe {
+    overflow: hidden;
+    & .title {
+      font-size: 3em;
+    }
+  
+    & .middle {
+      top: 70vh;
+      & p {
+        font-size: 16px;
+      }
+      & span {
+        top: -10vw;
+      }
+    }
+
+    & .description {
+      top: 100vh;
+      left: 50%;
+      margin-left: -35vw;
+      & div {
+        font-size: 15px;
+        margin-left: 0vw;
+      }
+      & img {
+        height: 250px;
+        top: 100%;
+        left: 20vw;
+        animation: autoShake 1s infinite alternate-reverse linear;
+      }
+      @keyframes autoShake {
+        from {
+          left: 18vw;
+        }
+        to {
+          left: 22vw;
+        }
+      }
+    }
+
   }
 }
