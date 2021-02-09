@@ -188,11 +188,19 @@
     align-items: center;
     transition: transform 0.5s ease;
   }
+  & input {
+    position: relative;
+    font-size: 10px;
+    width: 5px;
+    height: 5px;
+    top: -400px;
+    opacity: 0;
+  }
 }
 
 .contact-circle-open {
   @include contact-circle;
-  transform: rotate(270deg);
+  transform: rotate(260deg);
   & h4 {
     //background-color: rebeccapurple;
     font-size: 14px;
@@ -222,7 +230,15 @@
 
   }
   & .mail {
-    cursor: default;
+    cursor: pointer;
+  }
+  & input {
+    position: relative;
+    font-size: 10px;
+    width: 5px;
+    height: 5px;
+    top: -400px;
+    opacity: 0;
   }
 }
 
