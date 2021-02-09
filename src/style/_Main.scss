@@ -308,6 +308,17 @@
   }
 }
 
+.copymessage {
+  position: absolute;
+  font-size: 12px;
+  font-family: 'Do hyeon';
+  color: rgb(102, 22, 231);
+  left: 0;
+  top: 60%;
+  transition: all 1s;
+  opacity: 0;
+}
+
 @media all and (max-width: 900px) {
   .Main-title {
     overflow: hidden;
@@ -329,6 +340,18 @@
 
   .contact-circle-open {
     transform: rotate(260deg);
+  }
+
+  .copymessage {
+    position: absolute;
+    font-size: 12px;
+    font-family: 'Do hyeon';
+    color: rgb(102, 22, 231);
+    left: 0;
+    top: 60%;
+    transition: all 0.7s;
+    opacity: 0;
+    width: 90px;
   }
 }
 

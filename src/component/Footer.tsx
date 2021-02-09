@@ -48,14 +48,21 @@ const Footer: React.FC<FooterProps> = ({
 
   // Email 클립보드에 복사
   const emailRef: any = useRef();
+  const messageRef: any = useRef();
+
   const copyEmail: any = () => {
     emailRef.current.select();
     document.execCommand("Copy");
+    messageRef.current.style.opacity = '1';
+    setTimeout(() => {
+      messageRef.current.style.opacity = '0';
+    }, 3000);
   }
   
   return(
     <footer className='Main-footer'>
       <p onClick={handleContact} className={isContactOn ? 'contact-open' : undefined}>CONTACT</p>
+      <div className='copymessage' ref={messageRef}>이메일이 클립보드에 복사 되었습니다!</div>
       <div className={isContactOn ? 'contact-circle-open' : 'contact-circle'}>
         <h4><a href="https://github.com/kimts2627" target='_blank'>Github</a></h4>
         <h4><a href="https://velog.io/@tsts_" target='_blank'>Velog</a></h4>
