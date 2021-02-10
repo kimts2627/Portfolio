@@ -45,8 +45,8 @@ const Footer: React.FC<FooterProps> = ({
       window.location.href='/aboutme';
     }, 600);
   }
-
-  // Email 클립보드에 복사
+  
+  // Email 클립보드에 복사 후
   const emailRef: any = useRef();
   const messageRef: any = useRef();
 
