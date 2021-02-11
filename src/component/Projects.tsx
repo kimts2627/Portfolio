@@ -12,6 +12,8 @@ interface ProjectsProps {
 const Projects: React.FC<ProjectsProps> = ({ degree, handleDegree }) => {
   let newDeg: number = degree;
   let ProjectRef: any = useRef();
+
+  // 마우스 휠 이벤트
   useEffect(() => {
       window.addEventListener('mousewheel', (delta: any) => {
         if(delta.wheelDelta >= 3) {
@@ -34,27 +36,38 @@ const Projects: React.FC<ProjectsProps> = ({ degree, handleDegree }) => {
       })
   }, []);
 
+  // 터치 이벤트 
   useEffect(() => {
     let xLocation: number;
+    let isTouched: boolean = false;
+    //* 터치 시작
     ProjectRef.current.addEventListener('touchstart', (e: any) => {
+      isTouched = true;
       xLocation = e.touches[0].clientX;
       console.log(xLocation);
     }, false);
-
+    //* 터치 무브
     ProjectRef.current.addEventListener('touchmove', (e: any) => {
-      let movedXLocation: number = (e.touches[0].clientX - xLocation);
-      console.log(movedXLocation);
-      newDeg = newDeg + movedXLocation;
-      if(newDeg < 252) {
-        newDeg = 252;
+      if(isTouched) {
+        e.preventDefault();
+        let movedXLocation: number = (e.touches[0].clientX - xLocation);
+        console.log(movedXLocation);
+        newDeg = Math.floor(newDeg + movedXLocation);
+        if(newDeg < 252) {
+          newDeg = 252;
+        }
+        else if(newDeg > 270) {
+          newDeg = 270;
+        }
+        ProjectRef.current.style.transform = `rotate(${newDeg}deg)`;
+        handleDegree(newDeg)
       }
-      else if(newDeg > 270) {
-        newDeg = 270;
-      }
-      ProjectRef.current.style.transform = `rotate(${newDeg}deg)`;
-      handleDegree(newDeg)
-    }, false);
-  });
+    }, { passive: false });
+    //* 터치 종료
+    ProjectRef.current.addEventListener('touchend', (e: any) => {
+      isTouched = false;
+    });
+  }, []);
 
   return(
     <div className='projects' ref={ProjectRef}>
