@@ -51,13 +51,43 @@ const AboutMe: React.FC<AboutMeProps> = ({
     })
   }, []);
 
+  // 터치 스크롤 이벤트 
+  let aobutMeRef: any = useRef();
+
+  useEffect(() => {
+    let yLocation: number;
+    let isTouched: boolean = false;
+    //* 터치 시작
+    aobutMeRef.current.addEventListener('touchstart', (e: any) => {
+      isTouched = true;
+      yLocation = e.touches[0].clientY;
+      console.log(yLocation);
+    }, false);
+    //* 터치 무브
+    aobutMeRef.current.addEventListener('touchmove', (e: any) => {
+      if(isTouched) {
+        e.preventDefault();
+        let movedYLocation: number = (e.touches[0].clientY - yLocation);
+        console.log(movedYLocation);
+        titleRef.current.style.transform = `translateY(${movedYLocation}px)`;
+        middleRef.current.style.transform = `translateY(${movedYLocation}px)`;
+        descRef.current.style.transform = `translateY(${movedYLocation}px)`;
+        footerRef.current.style.transform = `translateY(${movedYLocation}px)`;
+      }
+    }, { passive: false });
+    //* 터치 종료
+    aobutMeRef.current.addEventListener('touchend', (e: any) => {
+      isTouched = false;
+    });
+  }, []);
+
   // 메인페이지로 돌아가는 함수
   const returnToMain = () => {
     window.location.href = '/main'
   }
 
   return(
-    <main className='AboutMe'>
+    <main className='AboutMe' ref={aobutMeRef}>
       <Header isMain={isMain} handleMovePage={handleMovePage}/>
       <section className='title' ref={titleRef}>
         <p>
