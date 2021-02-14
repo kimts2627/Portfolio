@@ -16,62 +16,58 @@ const Projects: React.FC<ProjectsProps> = ({ degree, handleDegree, width }) => {
 
   // 마우스 휠 이벤트
   useEffect(() => {
-    if(width > 900) {
-      window.addEventListener('mousewheel', (delta: any) => {
-        if(delta.wheelDelta >= 3) {
-          ProjectRef.current.style.transform = `rotate(${newDeg}deg)`;
-          newDeg = newDeg + 0.6;
-          console.log(newDeg);
-        }
-        else if(delta.wheelDelta <= -3) {
-          ProjectRef.current.style.transform = `rotate(${newDeg}deg)`;
-          newDeg = newDeg - 0.6;
-          console.log(newDeg);
-        }
+    window.addEventListener('mousewheel', (delta: any) => {
+      if(delta.wheelDelta >= 3) {
+        ProjectRef.current.style.transform = `rotate(${newDeg}deg)`;
+        newDeg = newDeg + 0.6;
+        console.log(newDeg);
+      }
+      else if(delta.wheelDelta <= -3) {
+        ProjectRef.current.style.transform = `rotate(${newDeg}deg)`;
+        newDeg = newDeg - 0.6;
+        console.log(newDeg);
+      }
+      if(newDeg < 252) {
+        newDeg = 252;
+      }
+      else if(newDeg > 270) {
+        newDeg = 270;
+      }
+      handleDegree(newDeg);
+    })
+  }, []);
+
+  // 터치 이벤트 
+  useEffect(() => {
+    let xLocation: number;
+    let isTouched: boolean = false;
+    //* 터치 시작
+    ProjectRef.current.addEventListener('touchstart', (e: any) => {
+      isTouched = true;
+      xLocation = e.touches[0].clientX;
+      console.log(xLocation);
+    }, false);
+    //* 터치 무브
+    ProjectRef.current.addEventListener('touchmove', (e: any) => {
+      if(isTouched) {
+        e.preventDefault();
+        let movedXLocation: number = (e.touches[0].clientX - xLocation);
+        console.log(movedXLocation);
+        newDeg = Math.floor(newDeg + movedXLocation);
         if(newDeg < 252) {
           newDeg = 252;
         }
         else if(newDeg > 270) {
           newDeg = 270;
         }
-        handleDegree(newDeg);
-      })
-    }
-  }, []);
-
-  // 터치 이벤트 
-  useEffect(() => {
-    if(width <= 900) {
-      let xLocation: number;
-      let isTouched: boolean = false;
-      //* 터치 시작
-      ProjectRef.current.addEventListener('touchstart', (e: any) => {
-        isTouched = true;
-        xLocation = e.touches[0].clientX;
-        console.log(xLocation);
-      }, false);
-      //* 터치 무브
-      ProjectRef.current.addEventListener('touchmove', (e: any) => {
-        if(isTouched) {
-          e.preventDefault();
-          let movedXLocation: number = (e.touches[0].clientX - xLocation);
-          console.log(movedXLocation);
-          newDeg = Math.floor(newDeg + movedXLocation);
-          if(newDeg < 252) {
-            newDeg = 252;
-          }
-          else if(newDeg > 270) {
-            newDeg = 270;
-          }
-          ProjectRef.current.style.transform = `rotate(${newDeg}deg)`;
-          handleDegree(newDeg)
-        }
-      }, { passive: false });
-      //* 터치 종료
-      ProjectRef.current.addEventListener('touchend', (e: any) => {
-        isTouched = false;
-      });
-    }
+        ProjectRef.current.style.transform = `rotate(${newDeg}deg)`;
+        handleDegree(newDeg)
+      }
+    }, { passive: false });
+    //* 터치 종료
+    ProjectRef.current.addEventListener('touchend', (e: any) => {
+      isTouched = false;
+    });
   }, []);
 
   return(
