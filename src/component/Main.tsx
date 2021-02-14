@@ -92,7 +92,7 @@ const Main: React.FC<MainProps> = ({
         isMain={isMain}
         handleMovePage={handleMovePage}
       />
-      <Projects degree={degree} handleDegree={handleDegree}/>
+      <Projects degree={degree} handleDegree={handleDegree} width={width}/>
       <h1 className='Main-title' ref={titleRef}>{generateTitle()}</h1>
     </main>
   );
