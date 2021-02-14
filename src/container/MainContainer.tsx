@@ -2,7 +2,13 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Main from '../component/Main';
 import { RootState } from '../modules';
-import { handleDegree, changeCurrentProject, handleContact, handleMovePage } from '../modules/main';
+import {
+  handleDegree,
+  changeCurrentProject,
+  handleContact,
+  handleMovePage,
+  handleWidth
+} from '../modules/main';
 
 const MainComponent: React.FC = () => {
 
@@ -10,6 +16,7 @@ const MainComponent: React.FC = () => {
   const isContactOn = useSelector((state: RootState) => state.main.isContactOn);
   const currentProject = useSelector((state: RootState) => state.main.currentProject);
   const isMain = useSelector((state: RootState) => state.main.isMain);
+  const width = useSelector((state: RootState) => state.main.width);
 
   const dispatch = useDispatch();
 
@@ -29,8 +36,13 @@ const MainComponent: React.FC = () => {
     dispatch(handleMovePage());
   }
 
+  const handlingWidth = (width: number) => {
+    dispatch(handleWidth(width));
+  }
+
   return(
     <Main
+      width={width}
       degree={degree}
       isContactOn={isContactOn}
       isMain={isMain}
@@ -39,6 +51,7 @@ const MainComponent: React.FC = () => {
       changeCurrentProject={changingCurrentProject}
       handleContact={handlingContact}
       handleMovePage={handlingMovePage}
+      handleWidth={handlingWidth}
     />
   );
 }

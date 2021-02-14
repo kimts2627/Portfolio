@@ -4,6 +4,7 @@ import Footer from './Footer';
 import Projects from './Projects';
 
 interface MainProps {
+  width: number;
   isMain: boolean;
   degree: number;
   isContactOn: boolean;
@@ -12,9 +13,11 @@ interface MainProps {
   handleDegree: (newDegree: number) => void;
   handleContact: () => void;
   handleMovePage: () => void;
+  handleWidth: (width: number) => void;
 }
 
 const Main: React.FC<MainProps> = ({
+  width,
   isMain,
   degree,
   isContactOn,
@@ -22,13 +25,24 @@ const Main: React.FC<MainProps> = ({
   changeCurrentProject,
   handleDegree,
   handleContact,
-  handleMovePage
+  handleMovePage,
+  handleWidth
 }) => {
 
   // 현재 프로젝트 및 배경컬러 변경
   const fadeRef1: any = useRef();
   const fadeRef2: any = useRef();
 
+  // width 자동 업데이트
+  useEffect(() => {
+    handleWidth(window.innerWidth);
+    window.addEventListener('resize', () => handleWidth(window.innerWidth));
+    return () => {
+      window.addEventListener('resize', () => handleWidth(window.innerWidth));
+    }
+  }, []);
+
+  // 배경 컬러 이펙트 변경
   useEffect(() => {
     changeCurrentProject();
     if(degree > 261) {
@@ -64,7 +78,7 @@ const Main: React.FC<MainProps> = ({
   return(
     <main className='Main'>
       <div className='tutorial'>
-        Scroll to Explore
+        {width > 900 ? 'Scroll to Explore' : 'Touch Move to Explore'}
       </div>
       <div className='Main-effect'>
         <div className='fade1' ref={fadeRef1}/>
